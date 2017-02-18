@@ -4,6 +4,7 @@ from threading import Thread
 CHECKMARKS = []
 
 def timer(time):
+	'''Counts down from the integer argument time'''
 	print("Timer counting down from {} minutes".format(time))
 	pTime = int(time * 60)
 	sleep(pTime)
@@ -12,6 +13,7 @@ def timer(time):
 	pBreak()
 
 def pBreak():
+	'''Checks count of global var CHECKMARKS'''
 	global CHECKMARKS
 	if len(CHECKMARKS) % 4 == 0:
 		CHECKMARKS = 0
@@ -20,6 +22,7 @@ def pBreak():
 		print("Take a 5 minute break!")
 
 def distractions():
+	'''Logs distractions experienced during Pomodoro sessions'''
 	f = open("log.txt", "a")
 	while True:
 		i = input()
@@ -27,11 +30,13 @@ def distractions():
 	f.close()
 
 def recordCheckmark():
+	'''Adds a checkmark to global var CHECKMARKS'''
 	global CHECKMARKS
 	CHECKMARKS.append("!")
 	print("Checkmark added!")
 
 def pomodoro():
+	'''Runs all functions together to form the Pomodoro system'''
 	global CHECKMARKS
 	status = True
 	f = open("log.txt", "a")
